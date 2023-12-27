@@ -1,16 +1,20 @@
-# This is a sample Python script.
+import aiogram
+import configparser
+from private_handler import PrHa_router
+from init_db import get_db
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+config = configparser.ConfigParser()
+
+config.read("config.ini")
+
+bot = aiogram.Bot(token=config.get("API", "token"))
+dp = aiogram.Dispatcher()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+dp.include_routers(PrHa_router)
+
+dp["db"] = get_db(True)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    dp.run_polling(bot)

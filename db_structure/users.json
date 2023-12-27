@@ -1,0 +1,19 @@
+{
+  "_id": "userid",
+  "start_date": "date of the start",
+  "username": "username of the user",
+  "debtors": [
+    {
+      "_id": "unique id",
+      "userid": "if exists else no",
+      "name": "how he was named",
+      "debts": [
+        {
+          "name": "name of the debt",
+          "sum": "how many he owes you",
+          "payed": "how many he payed you"
+        }
+      ]
+    }
+  ]
+}
